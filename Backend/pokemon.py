@@ -4,7 +4,7 @@ class Pokemon:
     _instance_count_ = 0
 
     
-    def __init__(self, name, cp, attack, defense, HP):
+    def __init__(self, name, cp, attack, defense, health):
         # Required Attributes
 
         # Generate a unique ID for each instance of this class, as you can have many of the same Pokemon.
@@ -16,15 +16,19 @@ class Pokemon:
         self.cp = cp
 
         # You can derive many more attributes from these 
-        self.attack = attack     # Integer, 0-15
-        self.defense = defense    # Integer, 0-15
-        self.HP = HP         # Integer, 0-15
+        self.attack = attack        # Integer, 0-15
+        self.defense = defense      # Integer, 0-15
+        self.health = health        # Integer, 0-15
         # The search '(N)attack' will return Pokemon with the matching attack appraisal (int 0-4)
         # The search 'attack(N) will return Pokemon with the matching attack stat (int 0-15)
 
     
     # All other attributes
     # For now, just putting everything here that I can rembemeber. Functionality will be added later
+
+    # Due to the game not not meaningfully differentiating between the HP IVs and HP (hit points), I have had to choose to call one 'HP' and the other 'health'
+    # This is hit points
+    HP = None
 
     type1 = None
     type2 = None
@@ -38,16 +42,17 @@ class Pokemon:
     weight = None
     height = None
 
+    tags = []
+
 
     # Binary attributes
     # 1 is yes, 0 is no
 
     # Innate qualities
     _favorite_ = 0      # Favorited?
-    _tagged_ = 0        # Tagged NOTE: In game search for tagged is '#'
+    _tagged_ = 0        # Tagged NOTE: In game search uses '#' for this filter
 
-    
-    _costume_ = 0       # Event?
+    _costume_ = 0       # Costume?
     _shiny_ = 0         # Shiny?
 
     _eggsonly_ = 0      # Egg-exclusive?
