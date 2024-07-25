@@ -1,27 +1,44 @@
 
 
+import pandas as pd
+
+
+pokedex_csv = pd.read_csv(r"C:\Users\ashill11\Documents\VSCode Projects\PowerBox-for-Pokemon-Go\Data\Pokedex.csv")
+
+numbers = pokedex_csv.get('No')
+branch_codes = pokedex_csv.get('Branch_Code')
+names = pokedex_csv.get('Name')
+
+for number, branch_code, name, in numbers, branch_codes, names:
+    pass
+
+
 class Pokemon:
     _instance_count_ = 0
 
     
-    def __init__(self, number, name, cp, attack, defense, health):
-        # Required Attributes
+    def __init__(self, name):
+        # Init takes the bare minimum required attributes to build a Pokemon
+        # Inputs should come from the client UI using POST
 
         # Generate a unique ID for each instance of this class, as you can have many of the same Pokemon.
         Pokemon._instance_count_ += 1
         self.id = Pokemon._instance_count_
 
-        # sent over by the web UI
-        self.number = number        # in Pokedex
         self.name = name
-        self.cp = cp
 
-        # You can derive many more attributes from these 
-        self.attack = attack        # integer, 0-15
-        self.defense = defense      # integer, 0-15
-        self.health = health        # integer, 0-15
-        # The search '(N)attack' will return Pokemon with the matching attack appraisal (int 0-4)
-        # The search 'attack(N) will return Pokemon with the matching attack stat (int 0-15)
+        # Pokedex numbers
+        #number = 
+        #branch_code = 
+
+    cp = None               # integer: N   
+
+    # You can derive many more attributes from these 
+    attack = None           # integer: range(0-15)
+    defense = None          # integer: range(0-15)
+    health = None           # integer: range(0-15)
+    # The search '(N)attack' will return Pokemon with the matching attack appraisal (int 0-4)
+    # The search 'attack(N) will return Pokemon with the matching attack stat (int 0-15)
 
     
     # All other attributes
@@ -36,8 +53,8 @@ class Pokemon:
     year = None             # integer: 20XX
     date = None             # string: mm/dd/yyyy # Format could be picked by user
 
-    buddy = None            # integer: 0-5
-    mega = None             # integer: 1-3
+    buddy = None            # integer: range(0-5)
+    mega = None             # integer: range(1-3)
 
     type1 = None            # string: 'TYPE'
     type2 = None            # string: 'TYPE' OR None
@@ -71,29 +88,29 @@ class Pokemon:
 
     # Binary attributes
     # 1 is yes, 0 is no
-    _favorite_ = 0      # Favorited?
-    _tagged_ = 0        # Tagged NOTE: In game search uses '#' for this filter
+    favorite = 0      # Favorited?
+    tagged = 0        # Tagged NOTE: In game search uses '#' for this filter
 
-    _costume_ = 0       # Costume?
-    _shiny_ = 0         # Shiny?
+    costume = 0       # Costume?
+    shiny = 0         # Shiny?
 
-    _eggsonly_ = 0      # Egg-exclusive?
-    _hatched_ = 0       # Hatched?
+    eggsonly = 0      # Egg-exclusive?
+    hatched = 0       # Hatched?
 
-    _shadow_ = 0        # Shadow?
-    _purified_ = 0      # Purified?
+    shadow = 0        # Shadow?
+    purified = 0      # Purified?
 
-    _legendary_ = 0     # Legendary?
-    _mythical_ = 0      # Mythical?
-    _ultra_beasts_ = 0  # Ultra Beast?
+    legendary = 0     # Legendary?
+    mythical = 0      # Mythical?
+    ultra_beasts = 0  # Ultra Beast?
 
-    _traded_ = 0        # Traded?
-    _lucky_ = 0         # Lucky?
-    _party_ = 0         # Caught in a party?
-    _raid_ = 0          # Caught in a raid?
+    traded = 0        # Traded?
+    lucky = 0         # Lucky?
+    party = 0         # Caught in a party?
+    raid = 0          # Caught in a raid?
 
-    _item_ = 0          # Evolves with item?
-    _tradeevolve_ = 0   # Evolves with trade?
+    item = 0          # Evolves with item?
+    tradeevolve = 0   # Evolves with trade?
 
 
     
