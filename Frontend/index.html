@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Filter</title>
+    <title>Live Filter with Autocomplete</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -48,8 +48,12 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             border-radius: 4px;
         }
-        p {
-            margin: 5px 0;
+        .item {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .item:hover {
+            background-color: #f0f0f0;
         }
     </style>
 </head>
@@ -61,6 +65,17 @@
         <div id="response"></div>
     </div>
     <script>
+        function addClickEventToItems() {
+        const items = document.querySelectorAll('.item');
+        items.forEach(item => {
+            item.addEventListener('click', function() {
+                const input = document.getElementById('userInput');
+                input.value = this.textContent;
+                input.dispatchEvent(new Event('input'));  // Trigger the input event
+            });
+        });
+    }
+
         document.getElementById('userInput').addEventListener('input', function() {
             const input = document.getElementById('userInput').value;
             const responseDiv = document.getElementById('response');
@@ -86,7 +101,8 @@
                     responseDiv.innerHTML = `Error: ${data.error}`;
                 } else {
                     const items = data.items;
-                    responseDiv.innerHTML = items.map(item => `<p>${item}</p>`).join('');
+                    responseDiv.innerHTML = items.map(item => `<p class="item">${item}</p>`).join('');
+                    addClickEventToItems();
                 }
             })
             .catch(error => {
