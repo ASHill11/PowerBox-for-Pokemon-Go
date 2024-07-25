@@ -35,6 +35,9 @@ class Pokemon:
     region = None           # string: <REGION>
     year = None             # integer: 20XX
 
+    buddy = None            # integer: 0-5
+    mega = None             # integer: 1-3
+
     type1 = None            # string: <TYPE>
     type2 = None            # string: <TYPE> OR None
 
@@ -44,7 +47,8 @@ class Pokemon:
 
     weight = None           # float: x.xx (kg)
     height = None           # float: x.xx (m)
-    classification = None   # string: 'XXL', 'XL', 'XS', or 'XXS'
+    size = None   # string: 'XXL', 'XL', 'XS', 'XXS, or None'
+    # Also see: biggest / smallest, heaviest / lightest below
 
     tags = []   # Items in list defined by user, should all be stored as strings
 
