@@ -1,4 +1,14 @@
-import flask
+
+
+from flask import Flask
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return('Howdy')
 
 """
 This will be the main Python file which interfaces with other Python files, as well as being a hub for APIs

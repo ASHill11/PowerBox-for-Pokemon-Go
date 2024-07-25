@@ -29,17 +29,18 @@ class Pokemon:
 
     # Due to the game not not meaningfully differentiating between the HP IVs and HP (hit points), I have had to choose to call one 'HP' and the other 'health'
     # This is hit points
+    hit_points = None       # integer: N
     nickname = None         # string: 'nickname'
-    HP = None               # integer: X
     sex = None              # string: male, female, or None
     region = None           # string: <REGION>
     year = None             # integer: 20XX
+    date = None             # string: mm/dd/yyyy # Format could be picked by user
 
     buddy = None            # integer: 0-5
     mega = None             # integer: 1-3
 
-    type1 = None            # string: <TYPE>
-    type2 = None            # string: <TYPE> OR None
+    type1 = None            # string: 'TYPE'
+    type2 = None            # string: 'TYPE' OR None
 
     fast_move = None        # string: 'name'
     charged_move1 = None    # string: 'name'
@@ -50,14 +51,22 @@ class Pokemon:
     size = None   # string: 'XXL', 'XL', 'XS', 'XXS, or None'
     # Also see: biggest / smallest, heaviest / lightest below
 
-    tags = []   # Items in list defined by user, should all be stored as strings
-
     # NOTE: Currently no way of knowing these values without significant trial and error on the user's end in the first place.
     # Not to mention, that the program would need to age the Pokemon stored in it to maintain accuracy.
     age = None              # integer: N (days)
+
     # Distance is calculated from present location, meaning this may well be useless to add have.
     # For now, it is here as a placeholder to be sure I haven't missed anything.
     distance = None         # integer: N (km)
+    location = None         # string: 'placename'
+    remote_location = None  # string: 'remoteplacename'
+    event = None            # string: 'eventname'
+    party_members = None    # list (of strings): ['trainername'] where len(party_members) <= 3
+
+
+    # USER defined attributes
+    tags = []   # Items in list defined by user, should all be stored as strings
+    # NOTE: Probably will add the ability for users to create custom attributes 
 
 
     # Binary attributes
@@ -80,6 +89,8 @@ class Pokemon:
 
     _traded_ = 0        # Traded?
     _lucky_ = 0         # Lucky?
+    _party_ = 0         # Caught in a party?
+    _raid_ = 0          # Caught in a raid?
 
     _item_ = 0          # Evolves with item?
     _tradeevolve_ = 0   # Evolves with trade?
