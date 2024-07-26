@@ -1,17 +1,7 @@
 
 
 import pandas as pd
-
-
-pokedex_csv = pd.read_csv(r"C:\Users\ashill11\Documents\VSCode Projects\PowerBox-for-Pokemon-Go\Data\Pokedex.csv")
-
-numbers = pokedex_csv.get('No')
-branch_codes = pokedex_csv.get('Branch_Code')
-names = pokedex_csv.get('Name')
-
-for number, branch_code, name, in numbers, branch_codes, names:
-    pass
-
+   
 
 class Pokemon:
     _instance_count_ = 0
@@ -112,10 +102,19 @@ class Pokemon:
     item = 0          # Evolves with item?
     tradeevolve = 0   # Evolves with trade?
 
-
-    
-x = Pokemon(input('Enter name: '), input('Enter CP: '))
-
-print(x.name)
-
-
+# Potential search algorithm and debugger
+"""    
+while True:
+    x = input('Enter Key: ')
+    if x == 'exit': exit()
+    if x == 'dict':
+        for i, n in pokedex_dict.items():
+            print(i + ' : ' + n)
+    try:
+        print('Matching values:')
+        for i in pokedex_dict:
+            if x in i:
+                print(pokedex_dict[i])
+    except:
+        print('ERROR\n')
+"""
