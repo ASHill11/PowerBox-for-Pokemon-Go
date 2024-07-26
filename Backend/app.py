@@ -22,7 +22,7 @@ numbers = [n for n in pokedex.get('No')]
 
 counter  = 0
 while counter < len(pokedex):
-    pokedex_dict[numbers[counter], names[counter]] = names[counter]
+    pokedex_dict[(numbers[counter], names[counter])] = names[counter]
     counter += 1
 
 
@@ -31,9 +31,11 @@ def filter_items():
     data = request.json
     if 'filter_value' in data:
         filter_value = data['filter_value'].lower()
-        filtered_names = [item for item in names if filter_value in item.lower()]
-
-        return jsonify({'items': filtered_items}), 200
+        filtered_items = {
+            value for (number, key), value in pokedex_dict.items()
+            if filter_value in key.lower() or filter_value in str(number)
+        }
+        return jsonify({'items': list(filtered_items)}), 200
     return jsonify({'error': 'Filter value not provided'}), 400
 
 """
