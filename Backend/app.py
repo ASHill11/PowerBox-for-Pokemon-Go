@@ -14,6 +14,17 @@ def index():
     return('Howdy')
 
 
+"""
+This will be the main Python file which interfaces with other Python files, as well as being a hub for APIs
+
+TODO:
+- Add Pokedex
+    - Consider whether to tie candy to the Pokedex or some other store
+    - Mega energy, as well
+- Add other global resources, such as stardust
+"""  
+
+
 # data to filter
 pokedex = pd.read_csv("C:/Users/ashill11/Documents/VSCode Projects/PowerBox-for-Pokemon-Go/Data/Pokedex.csv")
 pokedex_dict = {}
@@ -37,7 +48,7 @@ def filter_items():
         # Joke
         if not filter_value:
             # And much easier than dealing with an empty value, apparently
-            filter_value = '201'
+            filter_value = '772'
                                                                                                       
         # I don't want just a dash or underscore returning the whole list, so I'm hard-coding it to return nothing
         if filter_value == '-' or filter_value == '_':
@@ -77,20 +88,6 @@ def filter_items():
             
         return jsonify({'items': filtered_names}), 200
     return jsonify({'error': 'Filter value not provided'}), 400
-
-
-"""
-This will be the main Python file which interfaces with other Python files, as well as being a hub for APIs
-
-TODO:
-- Add Pokedex
-    - Consider whether to tie candy to the Pokedex or some other store
-    - Mega energy, as well
-- Add other global resources, such as stardust
-"""  
-
-
-# APIs
 
 
 
