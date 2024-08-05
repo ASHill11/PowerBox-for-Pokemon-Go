@@ -3,6 +3,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
+import os
 import sys
 
 
@@ -26,7 +27,7 @@ TODO:
 
 
 # data to filter
-pokedex = pd.read_csv("C:/Users/ashill11/Documents/VSCode Projects/PowerBox-for-Pokemon-Go/Data/Pokedex.csv")
+pokedex = pd.read_csv(os.path.join(os.path.dirname(__file__), "../Data/Pokedex.csv"))
 pokedex_dict = {}
 
 numbers = [n for n in pokedex.get('No')]
